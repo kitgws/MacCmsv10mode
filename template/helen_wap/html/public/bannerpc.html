@@ -1,0 +1,40 @@
+<link type="text/css" rel="stylesheet" href="{$maccms.path_tpl}jj/css/index.css" />
+
+<script src="{$maccms.path_tpl}jj/js/jquery.superslide.2.1.1.js" type="text/javascript"></script>
+
+
+
+
+<div class="slide">
+<div class="slide-box">
+	<ul>
+		{maccms:vod num="8" paging="no" type="all" level="9" order="desc" by="sort"}
+		<li class="slide-li" style="background:#bed5dd url({$vo.vod_pic_slide|mac_url_img}) 50% 0 no-repeat;"><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank">{$vo.vod_name}</a></li>
+		{/maccms:vod}
+	</ul>
+</div>
+<div class="slide-item box">
+	{maccms:vod num="8" paging="no" type="all" level="9" order="desc" by="sort"}
+	<div class="slide-detail">
+		<a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}" target="_blank" class="img"><img src="{$vo.vod_pic|mac_url_img}" alt="{$vo.vod_name}"></a>
+{if condition="$vo.type_id == 2"}
+		<div class="slide-cont">
+			<p>更新至</p>
+			<p class="fn-clear">
+			<span>{$vo.vod_serial}</span><em>集</em>
+			</p>
+		</div>
+{/if}
+		<div class="slide-txt">
+			<h2><a href="{:mac_url_vod_detail($vo)}" title="{$vo.vod_name}">{$vo.vod_name}</a></h2>
+			<p>{$vo.vod_actor}</p>
+			<p>{$vo.vod_blurb|mac_substring=20}</p>
+		</div>
+	</div>{/maccms:vod}
+</div>
+<div class="slide-img">{maccms:vod num="8" paging="no" type="all" level="9" order="desc" by="sort"}
+	<a href="{:mac_url_vod_detail($vo)}" target="_blank"><img src="{$vo.vod_pic|mac_url_img}" alt="{$vo.vod_name}"/></a>{/maccms:vod}
+</div>
+</div>
+
+<script type="text/javascript">jQuery(".slide").slide({ titCell:".slide-img a", mainCell:".slide-box ul", effect:"fade",  autoPlay:true, delayTime:300,targetCell:".slide-item .slide-detail"});	</script>

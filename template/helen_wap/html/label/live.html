@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui">
+<title>高清直播 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+<meta name="author" content="muqiao">
+
+
+<link href="{$maccms.path_tpl}css/Joe-red.css" type="text/css" rel="stylesheet" />
+
+<script type="text/javascript" src="//apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="{$maccms.path_tpl}jss/leeleo.js" ></script>
+
+
+</head>
+<body>
+<div class="channel">
+    <header>
+		<div class="head">
+		<a class="pull-left btn" onclick="back();">
+			<span class="iconfont icon-back"></span>
+		</a>
+		<font style="float: left;margin-left:5px;font-size:.38rem;line-height:.85rem">高清直播</font>
+		    <a class="pull-right btn"  tapmode onclick="openDialog('text')">
+		        <span class="iconfont icon-creative"></span>
+		    </a>
+			<a class="pull-right btn" href="{:mac_url('label/top')}" tapmode onclick="showDefault('loading')">
+		        <span class="iconfont icon-hot"></span>
+		   	</a>
+			<a class="pull-right btn" href="{:mac_url('label/news')}" tapmode onclick="showDefault('loading')">
+		        <span class="iconfont icon-time"></span>
+		    </a>
+		</div>
+	</header>
+<!--央视频道-->
+	<section class="mod">
+		<div class="mod-head clearfix">
+			<div class="mod-head-title">
+				<span class="mod-head-name">
+				<svg class="icon" aria-hidden="true" style="font-size: 1.4rem;"><use xlink:href="#icon-dong"></use></svg>央视频道</span>
+			</div>
+			<a class="change">
+			<span class="iconfont icon-location"></span>&nbsp好看的直播&nbsp</a>
+		</div>
+		<div class="mod-main clearfix">
+			<div class="mod-row">
+				<ul class="mainmenu" tapmode onclick="showDefault('loading')">
+				<li><a href="{:mac_url('label/cctv1')}" ><b><img src="{$maccms.path_tpl}images/tv/c1.png" /></b><span style="margin-top: -0.95rem;">CCTV1</span></a></li>
+				<li><a href="{:mac_url('label/cctv2')}" ><b><img src="{$maccms.path_tpl}images/tv/c2.png" /></b><span style="margin-top: -0.95rem;">CCTV2</span></a></li>
+				<li><a href="{:mac_url('label/cctv3')}" ><b><img src="{$maccms.path_tpl}images/tv/c3.png" /></b><span style="margin-top: -0.95rem;">CCTV3</span></a></li>
+				<li><a href="{:mac_url('label/cctv4')}" ><b><img src="{$maccms.path_tpl}images/tv/c4.png" /></b><span style="margin-top: -0.95rem;">CCTV4</span></a></li>
+				<li><a href="{:mac_url('label/cctv5')}" ><b><img src="{$maccms.path_tpl}images/tv/c5.png" /></b><span style="margin-top: -0.95rem;">CCTV5</span></a></li>
+				<li><a href="{:mac_url('label/cctv6')}" ><b><img src="{$maccms.path_tpl}images/tv/c6.png" /></b><span style="margin-top: -0.95rem;">CCTV6</span></a></li>
+				<li><a href="{:mac_url('label/cctv7')}" ><b><img src="{$maccms.path_tpl}images/tv/c7.png" /></b><span style="margin-top: -0.95rem;">CCTV7</span></a></li>
+				<li><a href="{:mac_url('label/cctv8')}" ><b><img src="{$maccms.path_tpl}images/tv/c8.png" /></b><span style="margin-top: -0.95rem;">CCTV8</span></a></li>
+				<li><a href="{:mac_url('label/cctv9')}" ><b><img src="{$maccms.path_tpl}images/tv/c9.png" /></b><span style="margin-top: -0.95rem;">CCTV9</span></a></li>
+				<li><a href="{:mac_url('label/cctv10')}" ><b><img src="{$maccms.path_tpl}images/tv/c10.png" /></b><span style="margin-top: -0.95rem;">CCTV10</span></a></li>
+				<li><a href="{:mac_url('label/cctv11')}" ><b><img src="{$maccms.path_tpl}images/tv/c11.png" /></b><span style="margin-top: -0.95rem;">CCTV11</span></a></li>
+				<li><a href="{:mac_url('label/cctv12')}" ><b><img src="{$maccms.path_tpl}images/tv/c12.png" /></b><span style="margin-top: -0.95rem;">CCTV12</span></a></li>
+				<li><a href="{:mac_url('label/cctv13')}" ><b><img src="{$maccms.path_tpl}images/tv/c13.png" /></b><span style="margin-top: -0.95rem;">CCTV13</span></a></li>
+				<li><a href="{:mac_url('label/cctv14')}" ><b><img src="{$maccms.path_tpl}images/tv/c14.png" /></b><span style="margin-top: -0.95rem;">CCTV14</span></a></li>
+				<li><a href="{:mac_url('label/cctv15')}" ><b><img src="{$maccms.path_tpl}images/tv/c15.png" /></b><span style="margin-top: -0.95rem;">CCTV15</span></a></li>
+				</ul></br>
+			</div>
+		</div>
+	</section>
+<!--卫视频道-->
+	<section class="mod">
+		<div class="mod-head clearfix">
+			<div class="mod-head-title">
+				<span class="mod-head-name">
+				<svg class="icon" aria-hidden="true" style="font-size: 1.4rem;"><use xlink:href="#icon-dong"></use></svg>卫视频道</span>
+			</div>
+			<a class="change">
+			<span class="iconfont icon-location"></span>&nbsp好看的直播&nbsp</a>
+		</div>
+		<div class="mod-main clearfix">
+			<div class="mod-row">
+				<ul class="mainmenu" tapmode onclick="showDefault('loading')">
+				<li><a href="{:mac_url('label/hn')}" ><b><img src="{$maccms.path_tpl}images/tv/hn.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">湖南卫视</span></a></li>
+				<li><a href="{:mac_url('label/zj')}" ><b><img src="{$maccms.path_tpl}images/tv/zj.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">浙江卫视</span></a></li>
+				<li><a href="{:mac_url('label/js')}" ><b><img src="{$maccms.path_tpl}images/tv/js.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">江苏卫视</span></a></li>
+				<li><a href="{:mac_url('label/df')}" ><b><img src="{$maccms.path_tpl}images/tv/df.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">东方卫视</span></a></li>
+				<li><a href="{:mac_url('label/ah')}" ><b><img src="{$maccms.path_tpl}images/tv/ah.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">安徽卫视</span></a></li>
+				<li><a href="{:mac_url('label/bj')}" ><b><img src="{$maccms.path_tpl}images/tv/bj.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">北京卫视</span></a></li>
+				<li><a href="{:mac_url('label/hub')}" ><b><img src="{$maccms.path_tpl}images/tv/hub.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">湖北卫视</span></a></li>
+				<li><a href="{:mac_url('label/sc')}" ><b><img src="{$maccms.path_tpl}images/tv/sc.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">四川卫视</span></a></li>
+				<li><a href="{:mac_url('label/dn')}" ><b><img src="{$maccms.path_tpl}images/tv/dn.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">东南卫视</span></a></li>
+				<li><a href="{:mac_url('label/tj')}" ><b><img src="{$maccms.path_tpl}images/tv/tj.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">天津卫视</span></a></li>
+				<li><a href="{:mac_url('label/sz')}" ><b><img src="{$maccms.path_tpl}images/tv/sz.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">深圳卫视</span></a></li>
+				<li><a href="{:mac_url('label/gz')}" ><b><img src="{$maccms.path_tpl}images/tv/gz.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">贵州卫视</span></a></li>
+				<li><a href="{:mac_url('label/gd')}" ><b><img src="{$maccms.path_tpl}images/tv/gd.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">广东卫视</span></a></li>
+				<li><a href="{:mac_url('label/sd')}" ><b><img src="{$maccms.path_tpl}images/tv/sd.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">山东卫视</span></a></li>
+				<li><a href="{:mac_url('label/hlj')}" ><b><img src="{$maccms.path_tpl}images/tv/hlj.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">黑龙江卫视</span></a></li>
+				<li><a href="{:mac_url('label/ln')}" ><b><img src="{$maccms.path_tpl}images/tv/ln.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">辽宁卫视</span></a></li>
+				<li><a href="{:mac_url('label/jl')}" ><b><img src="{$maccms.path_tpl}images/tv/jl.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">吉林卫视</span></a></li>
+				<li><a href="{:mac_url('label/jx')}" ><b><img src="{$maccms.path_tpl}images/tv/jx.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">江西卫视</span></a></li>
+				<li><a href="{:mac_url('label/heb')}" ><b><img src="{$maccms.path_tpl}images/tv/heb.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">河北卫视</span></a></li>
+				<li><a href="{:mac_url('label/gx')}" ><b><img src="{$maccms.path_tpl}images/tv/gx.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">广西卫视</span></a></li>
+				<li><a href="{:mac_url('label/sx2')}" ><b><img src="{$maccms.path_tpl}images/tv/sx2.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">陕西卫视</span></a></li>
+				<li><a href="{:mac_url('label/sx1')}" ><b><img src="{$maccms.path_tpl}images/tv/sx1.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">山西卫视</span></a></li>
+				<li><a href="{:mac_url('label/ha')}" ><b><img src="{$maccms.path_tpl}images/tv/ha.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">河南卫视</span></a></li>
+				<li><a href="{:mac_url('label/cq')}" ><b><img src="{$maccms.path_tpl}images/tv/cq.png" style="height:.8rem ;margin: 0.08rem 0 0 .10rem;width: 1.2rem;"/></b><span style="margin-top: -0.95rem;">重庆卫视</span></a></li>
+				</ul></br></br>
+			</div>
+		</div>
+	</section>
+</div>
+{include file="public/foot2"}
+</body>
+</html>

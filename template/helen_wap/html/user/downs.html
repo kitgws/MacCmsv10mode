@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>推广链接 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}"/>
+<meta name="description" content="{$maccms.site_description}"/>
+<meta name="author" content="muqiao">
+{include file="user/include"}
+</head>
+<body>
+	<div class="auth">
+        <div class="indextop">
+		<a class="pull-left btn" onclick="back();">
+			<span class="iconfont icon-back"></span>
+		</a>
+		<font style="float: left;margin-left:5px;font-size:.38rem;line-height:.85rem">推广链接</font>
+		<a class="pull-right btn" href="{:url('user/info')}">
+		    <span class="iconfont icon-settings"></span>
+		</a>
+        <a href="{:url('user/index')}" rel="nofollow" class="pull-right username">
+            <span>{$obj.user_name}</span></a>
+		</div>
+            <div class="form-box">
+                <img class="indextopimg" src="{$obj.user_portrait|mac_default='static/images/touxiang.png'|mac_url_img}" />
+                <h2 class="name">用户名：<span>{$obj.user_name}</span>&nbsp;&nbsp;IP:<span>{$obj.user_login_ip|mac_long2ip}</span></h2>
+                <div class="form-body clearfix">
+                    <input id="url" class="ipt" value="http://{$maccms.site_url}{:mac_url('user/reg')}?uid={$obj.user_id}" size="70" style="width:100%; font-size: 24px;">
+                </div>
+			<div class="authText" ><p>我的积分：{$obj.user_points}<br>推广一个用户注册送1积分 <br>推广的越多获得的积分越多 <br>谢谢大家对本站的支持 <br>{$maccms.site_name}&nbsp; ©2017-2018</p></div>
+			</div>
+		</div>
+{include file="user/foot"}
+</body>
+</html>

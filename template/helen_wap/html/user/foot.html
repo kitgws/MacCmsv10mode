@@ -1,0 +1,5 @@
+<nav class="mnav">
+<a href="{$maccms.path}"><span class="iconfont icon-home" tapmode onclick="showDefault('loading')"></span><p>首页</p></a>
+{maccms:type ids="1" order="asc" by="sort"}<a href="{:mac_url_type($vo)}"><span class="iconfont icon-copy" tapmode onclick="showDefault('loading')"></span><p>{$vo.type_name}</p></a>{/maccms:type}
+<a href="{:mac_url('label/live')}"><span class="iconfont icon-discover" tapmode onclick="showDefault('loading')"></span><p>直播</p></a>
+<a href="{:mac_url('user/login')}" class="active"><span class="iconfont icon-people" tapmode onclick="showDefault('loading')"></span><p>会员</p></a></nav>

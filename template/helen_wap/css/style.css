@@ -1,0 +1,111 @@
+/*****************************************
+* 作 者：老大哥
+* 版 本：1.0 
+* 概 要：网站公共样式
+*****************************************/
+
+/*-----------------------------------------公共样式-----------------------------------------*/
+
+
+/*下载页面*/
+#xiazai_box{padding:2rem 2%;text-align:center;background:#fff}
+#xiazai_box h1{ font-size:1.2rem;color:#3577ce;}
+#xiazai_box p{ font-size:1rem;line-height:3rem;}
+#xiazai_box a{display:inline-block;width:40%;line-height:3rem;color:#fff;font-size:1.2rem;margin:0 2%;border-radius:5px;}
+#xiazai_box .lande{background:#249ff1;}
+#xiazai_box .huangde{background:#ff6c00}
+
+/* 内容页tab */
+.tab{height:3rem;margin:2% auto 0; background:#fff;}
+.tab ul{margin:0;padding:0; list-style:none;}
+.tab ul a{font-size:1rem;}
+.tab li{float:left; color:#3097FD;border-bottom: 2px solid #ccc; width:33.3%;height:3rem; line-height:3rem; text-align:center;}
+.tab li.on_zzjs {width:33.3%; height:3rem;line-height:3rem;border-bottom: 2px solid #3097FD;}
+.tab li.on_zzjs a{color:#3097FD; }
+/* 首页五大大板块tab切换 */
+.box {background:#fff;margin-top:2%; width:100%; padding:0 2%;}
+.box .title{text-align:center; height:3rem; line-height:3rem;}
+.box .title h2{color:#000;display:block;font-size: 1.07rem;line-height:3rem;float: left; }
+.box .title h2 strong{font-weight:normal; color:#3097FD;}
+.box .title a{ float: right;color: #3097fd;font-size: 0.93rem;}
+.box .title em{float:left; font-size:100%;}
+.box .title .iLine{width:0.17rem;height:1.05rem;-webkit-border-radius:0.17rem;-moz-border-radius:0.17rem;border-radius:0.17rem;background-color:#3097fd;float:left;margin:1rem 0.4rem 0 0;line-height:0;}
+
+.box .box_con{ width:100%; overflow:hidden;}
+.box .box_con .img-list {}
+.box .box_con .img-list li {float:left;text-align:left;width:32%;padding-bottom: 3%; overflow:hidden;vertical-align:top;}
+.box .box_con .img-list li:nth-child(3n+2) {margin: 0 2%;}
+.box .box_con .img-list li a{display:block;overflow:hidden;position:relative;background:#fff;}
+.box .box_con .img-list li a h2{overflow:hidden; line-height:1.5rem;height:1.5rem;padding-top: 0.28rem; color:#333;font-size:0.85rem;}
+.box .box_con .img-list li a p{white-space:nowrap;display:block;overflow:hidden;line-height:1rem; height:1rem;font-size:0.6rem;color:#999;}
+
+.box .box_con .img-list li span{position:relative;display:block;}
+.box .box_con .img-list li span:before {content: '';position: relative;display: block;width: 100%;padding-bottom: 130%;}
+.box .box_con .img-list li a img{width:100%;background:url(../images/lazyload.gif) no-repeat scroll center center transparent;height: 100%;position: absolute;top: 0;left: 0;}
+.box .box_con .img-list li a i{ position:absolute; left:0; top:0;background:url(../images/flt.png); line-height:1rem;  padding:0.15rem 0.35rem; z-index:9; font-size:0.6rem; color:#FFF;font-style:normal; text-align:left;}
+.box .box_con .img-list li a em{display:none;}
+.box .box_con .img-list li a:hover{color:#fff;}
+.box .box_con .img-list li a:hover em{display:none;position:absolute; left:0; top:0; background:url(../images/flt.png) no-repeat center center;width:100%;z-index:8;}
+.box .box_con .img-list li a:hover h2{color:#333;background:#fff;}
+.box .box_con .img-list li a:hover p{color:#999;background:#fff;}
+.box .box_con .img-list li a:hover i{background:#3097FD;}
+
+
+/*影视详细页面推荐影视*/
+.ui-box{margin-top:10px;border:1px solid #ddd;background-color:#fff}
+
+
+/*下载地址*/
+#downlist_1{ background:#fff}
+.down-title {line-height:3rem;height:3rem;text-align: center;border-bottom:1px #ddd solid;background-color:#fcfcfc}
+.down-title h2 {float: left;padding-left:2%;}
+.down-title span{float:right;padding-right:2%; font-size:12px;}
+.down-title span i{ color:#ff6c00; font-style:normal;}
+.down-title .zk{background-color:#178228;}
+.down-title .ss{background-color:#333;}
+.down_list{}
+.down_list ul {overflow:hidden; zoom:1;}
+.down_list ul li {padding:2%; border-bottom:1px dashed #ccc; overflow:hidden; vertical-align:middle;}
+.down_list ul li:hover { background:#eee}
+.down_url {float:left; display:none;height:1rem; width:1rem; margin:0.5rem 0.5rem 0 0;}
+.down_list ul {}
+.down_list li p {float:left; display:inline; overflow:hidden; line-height:2rem;}
+.down_part_name {font-size:1rem;color: #090; float:left; display:inline;font-weight: normal;}
+.thunder_url {border:solid 1px #e4e4e4; background-color:#f9f9f9; color:#aaa; height:28px; line-height:28px; padding:0 6px; overflow:hidden; text-overflow:ellipsis;}
+.down_list ul li span {float:right; display:inline; overflow:hidden;}
+.down_list ul li span label {float:left; display:inline; height:2rem; line-height:2rem;font-size:1rem; padding:0 0.8rem; color:#fff;cursor:pointer;}
+.down_list ul li .filename{float:left; }
+.down_list ul li .filesize {float:right; color:#999; padding-left:10px; font-weight:normal;}
+.thunder_down {background-color:#249ff1;}
+.qqdl {background-color:#ff6c00;}
+.kk {background-color:#36c345;}
+.downtools {padding:2%; overflow:hidden; zoom:1;position: relative; color:#f83; text-align:right;}
+.downtools input {margin:0.5rem 0.5rem 0 0;padding:0; float:left; display:inline;height:1rem; width:1rem;}
+.downtools em { height:2rem; line-height:2rem; font-size:1rem;float:left; font-style:normal;}
+.downtools a {display:inline-block; margin-left:1rem; height:2rem; line-height:2rem; font-size:1rem;text-align:center;}
+.downtools .xuanfu{position: absolute; color:#ff0000; right:0; font-size:16px;}
+/*首页新闻资讯*/
+.box .box_news{clear:both; margin-bottom:2%;}
+.box .box_news li{ width:100%;overflow:hidden;border-bottom:1px dashed #ddd;height:2.5rem;line-height:2.5rem;float:left;background:url(../images/news.png) no-repeat left center; padding-left:18px;}
+.box .box_news li a{line-height:2.5rem; font-size:0.8rem;}
+
+/*新闻列表页*/
+.wenzhang{ margin:2% auto; clear:both; background:#fff; padding:0 2%;}
+
+.vodlist_l{ min-height:80%;}
+.vodlist_l ul{ text-align:left; width:100%; clear:both; overflow:hidden;}
+.vodlist_l ul li{ border-bottom:1px #ddd dashed; height:2.5rem;line-height:2.5rem; overflow:hidden;background:url(../images/news.png) no-repeat left center; padding-left:18px;}
+.vodlist_l ul li a{line-height:2.5rem; font-size:0.8rem;}
+.vodlist_l .pages{text-align:center; float:none; padding:5% 0; font-size:0.8rem;}
+.vodlist_l .pages a{font-size:0.8rem;}
+.vodlist_l .pages .pagebtn,.vodlist_l .pages .pagego,.vodlist_l .pages a,.vodlist_l .pages em,.vodlist_l .pages label,.vodlist_l .pages span{height:2rem;line-height:2rem;display:inline-block;text-align:center;margin:0 0.1rem;padding:0 0.8rem;color:#666;background-color:#eee;border: 1px solid #ddd;}
+.vodlist_l .pages span.disabled {filter:alpha(opacity=30);opacity:0.3;}
+.vodlist_l .pages .pagego{width:30px;padding:0 5px;height:22px;line-height:22px;font-weight:700;color:#333;border:1px solid #ccc;background:#fff;margin-right:3px;background:url(../images/input.gif) 0 0 repeat-x}
+.vodlist_l .pages .pagebtn{cursor:pointer;width:60px;height:22px;line-height:22px;padding:0 5px;font-weight:700;color:#333;border:1px solid #ccc;background-color:#eee}
+.vodlist_l .pages label{background:0 0}
+.vodlist_l .pages a:hover{color:#fff;background-color:#3097FD}
+.vodlist_l .pages span.current{color:#fff;background-color:#3097FD;}
+.vodlist_l .pages .prev{padding:0 0.8rem}
+.vodlist_l .pages .next{padding:0 0.8rem;}
+
+

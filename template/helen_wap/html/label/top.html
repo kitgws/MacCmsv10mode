@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui">
+<title>电视剧排行榜 电影排行榜 热门综艺 动漫排行榜 微电影排行 热播榜 - {$maccms.site_name}</title>
+<meta name="keywords" content="2018最新电视剧,2018最新电影,电影排行榜,电视剧大全,好看的电视剧,{$maccms.site_name}" />
+<meta name="description" content="{$maccms.site_name}为您提供2018最新电视剧、电视剧大全、好看的电视剧、最新的电影在线观看和迅雷电影下载，每天更新最新好看的电视剧，最新综艺真人秀，明星信息与相关电影电视剧，同时提供电影演员表、电视剧演员表，角色等相关内容，是影视爱好者们的电影天堂{$maccms.site_url}" />
+<meta name="author" content="muqiao">
+<script src="{$maccms.path_tpl}js/jquery.min.js"></script>
+<link rel="stylesheet" href="{$maccms.path_tpl}css/Joe-red.css" />
+<script type="text/javascript" src="{$maccms.path_tpl}jss/leeleo.js" ></script>
+</head>
+<body>
+<div class="channel">
+  <header>
+    <div class="head">
+		<a class="pull-left btn" onclick="back();">
+			<span class="iconfont icon-back"></span>
+		</a>
+			<font style="float: left;margin-left:5px;font-size:.38rem;line-height:.85rem;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;width:3rem;">热播榜</font>
+		<a class="pull-right btn"  tapmode onclick="openDialog('text')">
+			<span class="iconfont icon-creative"></span>
+		</a>
+		<a class="pull-right btn" href="{:mac_url('label/top')}" tapmode onclick="showDefault('loading')">
+			<span class="iconfont icon-hot"></span>
+		</a>
+		<a class="pull-right btn" href="{:mac_url('label/news')}" tapmode onclick="showDefault('loading')">
+			<span class="iconfont icon-time"></span>
+		</a>
+	</div>
+  </header>{maccms:type ids="1,2,3,4" order="asc" by="sort"}
+  <section class="bang-v">
+    <div class="list-v">
+      <div class="v-hd">
+        <h2>{$vo.type_name} • 推荐榜</h2>
+      </div>
+      <div>
+		<ul class="v-rank clearfix">{maccms:vod num="10" type="'.$vo['type_id'].'" order="desc" by="hits" id="vo2" key="key2"}
+			<li><i class="i-rank_num">{$key2}</i> <em class="v-num">{include file="public/serial"}</em><span class="v-tit"><a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" tapmode onclick="showDefault('loading')">{$vo2.vod_name}</a></span></li>{/maccms:vod}
+		</ul>
+      </div>
+    </div>
+    <div class="list-v">
+      <div class="v-hd">
+        <h2>{$vo.type_name} •本周热播榜</h2>
+      </div>
+      <div>
+		<ul class="v-rank clearfix" tapmode onclick="showDefault('loading')">{maccms:vod num="10" type="'.$vo['type_id'].'" order="desc" by="hits_week" id="vo2" key="key2"}
+			<li><i class="i-rank_num">{$key2}</i> <em class="v-num">{include file="public/serial"}</em><span class="v-tit"><a href="{:mac_url_vod_detail($vo2)}" title="{$vo2.vod_name}" tapmode onclick="showDefault('loading')">{$vo2.vod_name}</a></span></li>{/maccms:vod}
+		</ul>
+      </div>
+    </div>
+  </section>{/maccms:type}
+  </div>
+{include file="public/foot2"}
+</body>
+</html>

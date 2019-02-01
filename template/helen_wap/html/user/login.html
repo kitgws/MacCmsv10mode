@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>用户登录 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="user/include" /}
+</head>
+<body>
+<!--登录页面-->
+    <div class="auth">
+        <div class="logo-auth"><a href="{$maccms.path}" title="{$maccms.site_name}">{$maccms.site_name}</a></div>
+        <div class="form-box">
+            <h2 class="tit">用户登录<small style="margin-left:2.7rem;"><a href="{:url('user/findpass')}">找回密码</a></small></h2>
+            <div class="form-body clearfix">
+                <div class="form-main">
+                	<div class="errorlist" style="color:#f66"></div>
+                    <form method="post" action="">
+                    	<input id="flag" name="flag" type="hidden" value="center">
+                        <div class="auipt"><span class="iconfont icon-profile"></span>
+                            <input type="text" name="user_name" class="ipt" minlength="4" placeholder="用户名" />
+                        </div>
+                        <div class="auipt"><span class="iconfont icon-lock"></span>
+                            <input type="password" name="user_pwd" class="ipt" minlength="6" placeholder="密码" />
+                        </div>
+						{if condition="$GLOBALS['config']['user']['login_verify'] eq 1"}
+						<div class="auipt"><span class="iconfont icon-vipcard"></span>
+                            <div class="v-code"><img id="vcode" src="{:url('verify/index')}" alt="看不清？点击更换" align="absmiddle" class="pull-right" onClick="this.src=this.src+'?'+Math.random()" /></div>
+                            <input type="text" name="verify" placeholder="验证码" class="ipt" />
+						</div>
+						{/if}
+                        <a class="btn primary regbtn" href="{:url('user/reg')}" tapmode onclick="showDefault('loading')">注册</a>
+                        <input type="button" value="登录" id="btn_submit" class="btn primary regbtn" style="float:right;margin: -.75rem -.05rem;" tapmode onclick="showDefault('loading')"/>
+                        <!--a href="/index.php?m=user-reg-ref-qqlogin.html" tapmode onclick="showDefault('loading')"class="btn primary regbtn" style="margin: .25rem 1.7rem; 0 0;width:.8rem;height:.8rem"><img style="height: .8rem;" src="/template/user/js/qq_login.png" alt=""></a-->
+                        
+                    </form>
+                </div>
+            </div>
+                  <div class="authText">
+		              <p>{$maccms.site_name}&nbsp; ©2017-2018</p>
+	                </div>
+        </div>
+    </div> 
+{include file="user/foot"}
+<div style="display:none">
+<!-- 统计代码位置 --> 
+</div>
+<script>
+	$("input[name='login_name']").focus();
+
+	$('#btn_submit').click(function(){
+		var user_name = $('input[name="user_name"]').val();
+		var user_pwd = $('input[name="user_pwd"]').val();
+		var verify = $('input[name="verify"]').val();
+
+		if(user_name==''){
+			alert('账号不能为空');
+			$('input[name="user_name"]').focus();
+			return;
+		}
+
+		if(user_pwd==''){
+			alert('密码不能为空');
+			$('input[name="user_pass"]').focus();
+			return;
+		}
+
+		if(verify==''){
+			alert('验证码不能为空');
+			$('input[name="verify"]').focus();
+			return;
+		}
+
+		var data = {user_name:user_name, user_pwd:user_pwd, verify:verify };
+		$.ajax({
+			url: "{:url('user/login')}",
+			type: "post",
+			dataType: "json",
+			data: data,
+			beforeSend: function () {
+				//开启loading
+				//$(".loading_box").css("display","block");
+				$("#btn_submit").css("background","#fd6a6a").val("loading...");
+			},
+			success: function (r) {
+				if(r.code==1){
+					location.href="{:url('user/index')}";
+				}
+				else{
+					alert(r.msg);
+					$('#verify_img').click();
+				}
+			},
+			complete: function () {
+				//结束loading
+				//$(".loading_box").css("display","none");
+				$("#btn_submit").css("background","#fa4646").val("提交");
+			}
+		});
+
+	});
+</script>
+</body>
+</html>

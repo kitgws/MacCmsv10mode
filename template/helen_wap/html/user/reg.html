@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>新用户注册 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="user/include"}
+</head>
+<body>
+    <div class="auth">
+         <div class="logo-auth"><a href="{$maccms.path}" title="{$maccms.site_name}">{$maccms.site_name}</a></div>
+        <div class="form-box">
+            <h2 class="tit">新用户注册</h2>
+            <div class="form-body clearfix">
+                <div class="form-main">
+                	<div class="errorlist" style="color:#f66"></div>
+                    <form method="post" id="fm" action="">
+					
+					<div class="auipt"><span class="iconfont icon-profile"></span>
+				
+				<input type="text" id="user_name" name="user_name" class="reg-control" placeholder="请输入您的登录账号">
+			</div>
+			<div class="auipt"><span class="iconfont icon-lock"></span>
+				
+				<input type="password" id="user_pwd" name="user_pwd" class="reg-control" placeholder="请输入您的登录密码">
+			</div>
+			<div class="auipt"><span class="iconfont icon-lock"></span>
+				
+				<input type="password" id="user_pwd2" name="user_pwd2" class="reg-control" placeholder="请输入您的确认密码">
+			</div>
+			{if condition="$user_config.reg_verify neq 0"}
+			 <div class="auipt"><span class="iconfont icon-vipcard"></span>
+                            <div class="v-code"><img id="vcode" src="{:url('verify/index')}" alt="看不清？点击更换" align="absmiddle" class="pull-right" onClick="this.src=this.src+'?'" /></div>
+                            <input type="text" name="verify" placeholder="验证码" class="ipt" /> </div>
+							{/if}
+                        <a class="btn primary regbtn" onclick="back();">返回</a>
+                        <input type="button" value="立即注册" id="btn_submit" class="btn primary regbtn" style="float:right;margin: -.75rem -.05rem;" tapmode onclick="showDefault('loading')"/>
+					
+                    </form>
+                    
+                </div>
+            </div>
+                <div class="authText"><p>{$maccms.site_name}&nbsp; ©2017-2018</p></div>
+        </div>
+    </div> 
+{include file="user/foot"}
+<div style="display:none">
+<!-- 统计代码位置 --> 
+</div>
+<script>
+	$(".go-back").click(function () {
+		var ref = document.referrer;
+		location.href=ref;
+	});
+
+	$("#btn_submit").click(function() {
+		var data = $('#fm').serialize();
+		var input = $("#fm").serializeArray();
+		var pass1 = $("#pass1").val();
+		var pass2 = $("#pass2").val();
+		var inputName = new Array();
+		inputName['user_name'] = '账号';
+		inputName['user_pwd'] = '密码';
+		inputName['user_pwd2'] = '确认密码';
+		inputName['user_email'] = '邮箱';
+		inputName['verify'] = '验证码';
+
+		var is = false;
+		var err = '';
+		$.each(input,function(name,field) {
+			if (field.value == '' && field.name!='verify') {
+				is = true;
+				err = inputName[field.name] + '不能为空';
+				return false;
+			}
+		});
+		if (is) {
+			alert(err);
+			return false;
+		}
+		if (pass1 != pass2) {
+			alert('两次密码不一致');
+			return false;
+		}
+
+		$.ajax({
+			url: "{:url('user/reg')}",
+			type: "post",
+			dataType: "json",
+			data: data,
+			beforeSend: function () {
+				//开启loading
+				//$(".loading_box").css("display","block");
+				$("#btn_submit").css("background","#fd6a6a").val("loading...");
+			},
+			success: function (r) {
+				alert(r.msg);
+				if(r.code==1){
+					location.href="{:url('user/login')}";
+				}
+				else{
+					$('#verify_img').click();
+				}
+			},
+			complete: function () {
+				//结束loading
+				//$(".loading_box").css("display","none");
+				$("#btn_submit").css("background","#fa4646").val("提交");
+			}
+		});
+	})
+</script>
+</body>
+</html>

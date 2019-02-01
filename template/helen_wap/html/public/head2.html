@@ -1,0 +1,52 @@
+    
+	
+		<link href="{$maccms.path}static/css/home.css" rel="stylesheet" type="text/css" />
+	<link href="{$maccms.path_tpl}jss/stui_custom.css" type="text/css" rel="stylesheet" />
+		<link rel="stylesheet" href="{$maccms.path_tpl}jss/stui_default.css" type="text/css" />
+		
+		<script>var maccms={"path":"__ROOT__","mid":"{$maccms['mid']}","url":"{$maccms['site_url']}","wapurl":"{$maccms['site_wapurl']}","mob_status":"{$maccms['mob_status']}"};</script>
+		<script src="{$maccms.path}static/js/home.js"></script>
+	
+	
+	
+	
+	<header class="stui-header__top clearfix" id="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="stui-header_bd clearfix">
+            <div class="stui-header__logo">
+              <a class="logo" href="http://{$maccms.site_url}"></a>
+            </div>
+            <div class="stui-header__side">
+              <ul class="stui-header__user">
+                <li class="visible-xs">
+                  <a class="open-popup" href="javascript:;">
+                    <i class="icon iconfont icon-viewgallery"></i>
+                  </a>
+                </li>
+              </ul>
+              <div class="stui-header__search">
+                <form name="search" id="search" action="{:mac_url('vod/search')}"  autocomplete="off">
+                  <input class="form-control mac_wd" id="wd" placeholder="100万部影片任你搜" name="wd" type="text" required="">
+                  <input type="submit" id="searchbutton" value="" class="hide">
+                  <button class="submit" id="submit" onClick="$('#formsearch').submit();">
+                    <i class="icon iconfont icon-search"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+            <ul class="stui-header__menu type-slide">
+              <li {if condition="$maccms.aid eq 1"} class="active" {/if}>
+                <a href="{$maccms.path}">首页</a></li>
+				{maccms:type ids="1,2,3,4" order="asc" by="sort"}
+              <li {if condition="$obj.type_id eq $vo.type_id"} class="active" {/if}>
+                <a href="{:mac_url_type($vo)}">{$vo.type_name}</a>
+			  </li>
+				{/maccms:type}
+              <li {if condition="$maccms.aid eq 4"} class="active" {/if}><a href="{:mac_url('gbook/index')}"  >留言</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+   

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>修改信息 - 会员中心 -{$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="user/include"}
+</head>
+<body>
+<!--登录页面-->
+    <div class="auth">
+        <div class="indextop">
+		<a class="pull-left btn" onclick="back();">
+			<span class="iconfont icon-back"></span>
+		</a>
+		<font style="float: left;margin-left:5px;font-size:.38rem;line-height:.85rem">修改信息</font>
+		<a class="pull-right btn" href="{:url('user/info')}">
+		    <span class="iconfont icon-settings" tapmode onclick="showDefault('loading')"></span>
+		</a>
+        <a href="{:url('user/index')}" rel="nofollow" class="pull-right username">
+            <span>{$obj.user_name}</span></a>
+		</div>
+        <div class="form-box">
+            <img class="indextopimg" src="{$obj.user_portrait|mac_default='static/images/touxiang.png'|mac_url_img}">
+            <h2 class="name">用户名：<span>{$obj.user_name}</span>&nbsp;&nbsp;IP: <span>{$obj.user_login_ip|mac_long2ip}</span></h2>
+            <div class="form-body clearfix">
+                <div class="form-main">
+                	<div class="errorlist" style="color:#f66"></div>
+                    <form method="post" id="fm">
+                    <ul class="password" id="i-profile">
+                                <li class="auipt"><span class="iconfont icon-profile"></span>
+                                    <input type="text" name="user_name" class="ipt" value="{$obj.user_name}" disabled="" />
+                                </li>
+                                <li class="auipt"><span class="iconfont icon-lock"></span>
+                                    <input type="password" name="user_pwd" value="" class="ipt" placeholder="输入原密码" />
+                                </li>
+                                <li class="auipt"><span class="iconfont icon-lock"></span>
+                                    <input type="password" name="user_pwd1" value="" class="ipt" placeholder="输入新密码" />
+                                </li>
+								<li class="auipt"><span class="iconfont icon-lock"></span>
+                                    <input type="password" name="user_pwd2" value="" class="ipt" placeholder="再次确认" />
+                                </li>
+                                <li class="auipt"><span class="iconfont icon-qq"></span>
+                                    <input type="text" value="{$obj.user_qq}" size="40" name="user_qq" class="ipt" placeholder="QQ号码" />
+                                </li>
+                                <li class="auipt"><span class="iconfont icon-mail"></span>
+                                    <input type="text" size="40" value="{$obj.user_email}" name="user_email" class="ipt" placeholder="邮箱地址" />
+                                </li>
+                                <li class="auipt"><span class="iconfont icon-phone"></span>
+                                    <input type="text" size="40" value="{$obj.user_phone}" name="user_phone" class="ipt" placeholder="联系电话" />
+                                </li>
+                                <li class="auipt"><span class="iconfont icon-mark"></span>
+                                    <input type="text" size="40" value="{$obj.user_question}" name="user_question" class="ipt" placeholder="找回密码问题" />
+                                </li>
+                                <li class="auipt"><span class="iconfont icon-mark"></span>
+                                    <input type="text" size="40" value="{$obj.user_answer}" name="user_answer" class="ipt" placeholder="找回密码答案" />
+                                </li>
+                                <li tapmode onclick="showDefault('loading')">
+                                    <input type="button" name="gaimi" id="btn_submit" class="btn primary" value="确认修改">
+                                </li>
+
+                            </ul>
+                        </form>
+                </div>
+            </div>
+			<div class="authText"><p>{$maccms.site_name}&nbsp; ©2017-2018</p></div>
+		</div>
+	</div>
+{include file="user/foot"}
+<script>
+	$("#btn_submit").click(function() {
+		var data = $("#fm").serialize();
+		$.ajax({
+			url: "{:url('user/info')}",
+			type: "post",
+			dataType: "json",
+			data: data,
+			beforeSend: function () {
+				//开启loading
+				//$(".loading_box").css("display","block");
+				$("#btn_submit").css("background","#fd6a6a").val("loading...");
+			},
+			success: function (r) {
+				alert(r.msg);
+				if(r.code==1){
+					location.href="{:url('user/info')}";
+				}
+			},
+			complete: function () {
+				//结束loading
+				//$(".loading_box").css("display","none");
+				$("#btn_submit").css("background","#fa4646").val("提交");
+			}
+		});
+	});
+	$(".indextopimg").imageUpload({
+		formAction: "{:url('user/portrait')}",
+		inputFileName:'file',
+		browseButtonValue: '修改头像',
+		browseButtonClass:'btn btn-default btn-xs',
+		automaticUpload: true,
+		hideDeleteButton: true,
+		hover:true
+	})
+	$(".indextopimg").on("imageUpload.uploadFailed", function (ev, err) {
+		alert(err);
+	});
+</script>
+</body>
+</html>

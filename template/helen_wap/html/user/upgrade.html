@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>升级会员组 - 会员中心 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}"/>
+<meta name="description" content="{$maccms.site_description}"/>
+{include file="user/include"}
+</head>
+<body>
+    <!--登录页面-->
+    <div class="auth">
+        <div class="indextop">
+		<a class="pull-left btn" onclick="back();">
+			<span class="iconfont icon-back"></span>
+		</a>
+		<font style="float: left;margin-left:5px;font-size:.38rem;line-height:.85rem">充值卡充值</font>
+		<a class="pull-right btn" href="{:url('user/info')}">
+		    <span class="iconfont icon-settings"></span>
+		</a>
+        <a href="{:url('user/index')}" rel="nofollow" class="pull-right username">
+            <span>{$obj.user_name}</span></a>
+		</div>
+        <div class="form-box">
+            <img class="indextopimg" src="{$obj.user_portrait|mac_default='static/images/touxiang.png'|mac_url_img}">
+            <h2 class="name">用户名：<span>{$obj.user_name}</span>&nbsp;&nbsp;IP: <span>{$obj.user_login_ip|mac_long2ip}</span></h2>
+            <div class="form-body clearfix">
+                <div class="form-main">
+                         <div class="tits"><h3 style="color:#fa6567;text-align: center">升级会员组</h3></div>
+                        <form action="" method="post" name="form3" id="form3">
+
+                            <ul class="password">
+                            	<li class="auipt">
+                                    <input type="text" class="ipt" value="所属会员组：{$obj.group.group_name}" disabled="" style="border: 0" />
+                                </li>
+								{volist name="group_list" id="vo"}
+								{if condition="$vo.group_id gt 2"}
+                            	<li class="auipt" style="background: #f2854c;">
+                                    <span style="font-size: .28rem;padding-left: .8rem;color: #fff;" class="grade" data-id="{$vo.group_id}" data-name="{$vo.group_name}" data-points="{$vo.group_points_day}" data-long="day">包天：{$vo.group_points_day}积分</span>
+                                </li>
+								<li class="auipt" style="background: #36b1c0;">
+                                    <span style="font-size: .28rem;padding-left: .8rem;color: #fff;" class="grade" data-id="{$vo.group_id}" data-name="{$vo.group_name}"  data-points="{$vo.group_points_week}" data-long="week">包周：{$vo.group_points_week}积分</span>
+                                </li>
+								<li class="auipt" style="background: #f2395b;">
+                                    <span style="font-size: .28rem;padding-left: .8rem;color: #fff;" class="grade" data-id="{$vo.group_id}" data-name="{$vo.group_name}"  data-points="{$vo.group_points_month}" data-long="month">包月：{$vo.group_points_month}积分</span>
+                                </li>
+								<li class="auipt" style="background: #853f8a;">
+                                    <span style="font-size: .28rem;padding-left: .8rem;color: #fff;" class="grade" data-id="{$vo.group_id}" data-name="{$vo.group_name}"  data-points="{$vo.group_points_year}" data-long="year">包年：{$vo.group_points_year}积分</span>
+                                </li>{/if}{/volist}
+                                <li>
+                                   <p class="notice"><small>点击需要的会员组和时长进行购买升级</small></p>
+                                </li>
+                            </ul>
+                        </form>
+                </div>
+            </div>
+			<div class="authText"><p>{$maccms.site_name}&nbsp; ©2017-2018</p></div>
+		</div>
+	</div>
+{include file="user/foot"}
+<script>
+	$('.grade').click(function(){
+		var that=$(this);
+		var group_id = that.attr('data-id');
+		var group_name = that.attr('data-name');
+		var long = that.attr('data-long');
+		var points = that.attr('data-points');
+
+		if(confirm('确定要升级到【'+group_name+'】吗,需要花费【'+points+'】积分')) {
+			$.ajax({
+				url: "{:url('user/upgrade')}",
+				type: "post",
+				dataType: "json",
+				data: {group_id: group_id,long:long },
+				beforeSend: function () {
+					$("#btn_submit").css("background","#fd6a6a").val("loading...");
+				},
+				success: function (r) {
+					alert(r.msg);
+					if (r.code == 1) {
+						location.reload();
+					}
+				},
+				complete: function () {
+					$("#btn_submit").css("background","#fa4646").val("提交");
+				}
+			});
+		}
+	});
+</script>
+</body>
+</html>

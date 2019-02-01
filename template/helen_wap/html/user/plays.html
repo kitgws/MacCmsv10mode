@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>播放记录 - 会员中心 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+{include file="user/include"}
+</head>
+<body>
+    <!--登录页面-->
+    <div class="auth">
+        <div class="indextop">
+		<a class="pull-left btn" onclick="back();">
+			<span class="iconfont icon-back"></span>
+		</a>
+		<font style="float: left;margin-left:5px;font-size:.38rem;line-height:.85rem">播放记录</font>
+		<a class="pull-right btn" href="{:url('user/info')}">
+		    <span class="iconfont icon-settings"></span>
+		</a>
+        <a href="{:url('user/index')}" rel="nofollow" class="pull-right username">
+            <span>{$obj.user_name}</span></a>
+		</div>
+        <div class="form-box">
+            <img class="indextopimg" src="{$obj.user_portrait|mac_default='static/images/touxiang.png'|mac_url_img}">
+            <h2 class="name">用户名：<span>{$obj.user_name}</span>&nbsp;&nbsp;IP: <span>{$obj.user_login_ip|mac_long2ip}</span></h2>
+            <div class="form-body clearfix">
+                <div class="form-mainfav">
+                        <table class="table">
+                            <form id="form1" name="form1" method="post">{volist name="list" id="vo"}
+                                <!-- BEGIN row -->
+                                <tr>
+                                    <td>
+                                        <input name="ids[]" type="checkbox" value="{$vo.ulog_id}"><a target="_blank" href="{$vo.data.link}">{$vo.data.name}</a>/{$vo.data.type.type_name}</td>
+                                </tr>{/volist}
+                                <!-- END row -->
+                        </table>
+
+                <div class="check-del clearfix">
+                        <input class="btnon" type="button" id="btnChkAll" value="全选" class="input" onClick="MAC.CheckBox.All('ids[]');">
+                        <input class="btnon" type="button" id="btnChkOther" value="反选" class="input" onClick="MAC.CheckBox.Other('ids[]');">
+                        <input class="btnon" type="button" id="btnDel" value="删除" class="input" />
+                        <input class="btnon" type="button" id="btnClear" value="清空" class="input">
+                        </form>
+                </div>
+                </div>
+            </div>
+		</div>
+	</div>
+{include file="user/foot"}
+<script>
+	function delData(ids,all){
+		var msg ='删除';
+		if(all==1){
+			msg='清空';
+		}
+		if(confirm('确定要'+msg+'记录吗')){
+			$.post("{:url('user/ulog_del')}",{ids:ids,type:4,all:all},function(data) {
+				if (data.code == '1') {
+					alert('删除成功');
+					location.reload();
+				}else {
+					alert('删除失败：' + data.msg);
+				}
+			}, 'json')
+		}
+	}
+	$("#btnClear").click(function(){
+		delData('',1);
+	});
+	$("#btnDel").click(function(){
+		var ids = MAC.CheckBox.Ids('ids[]');
+		if(ids==''){
+			alert("请至少选择一个数据");
+			return;
+		}
+		delData(ids,0);
+	});
+</script>
+</body>
+</html>

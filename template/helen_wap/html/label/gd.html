@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>高清直播|广东卫视 - {$maccms.site_name}</title>
+<meta name="keywords" content="{$maccms.site_keywords}" />
+<meta name="description" content="{$maccms.site_description}" />
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui">
+<meta name="author" content="muqiao">
+<script src="{$maccms.path_tpl}js/jquery.min.js"></script>
+<link rel="stylesheet" href="{$maccms.path_tpl}css/Joe-red.css" />
+<script type="text/javascript" src="{$maccms.path_tpl}jss/leeleo.js" ></script>
+<body><!-- 头部  --> 
+<div class="channel">
+    <header>
+		<div class="head">
+		<a class="pull-left btn" onclick="back();">
+			<span class="iconfont icon-back"></span>
+		</a>
+		<font style="float: left;margin-left:5px;font-size:.38rem;line-height:.85rem">广东卫视</font>
+		    <a class="pull-right btn"  tapmode onclick="openDialog('text')">
+		        <span class="iconfont icon-creative"></span>
+		    </a>
+			<a class="pull-right btn" href="{:mac_url('label/top')}" tapmode onclick="showDefault('loading')">
+		        <span class="iconfont icon-hot"></span>
+		   	</a>
+			<a class="pull-right btn" href="{:mac_url('label/news')}" tapmode onclick="showDefault('loading')">
+		        <span class="iconfont icon-time"></span>
+		    </a>
+		</div>
+	</header>
+<!--播放器-->
+    <div class="vod-tips" id="tips-1" >
+	    <span class="iconfont icon-info"></span>
+	    <div class="vod-tips-title ellipsis-2">正在播放：广东卫视</div>
+	    <span class="iconfont icon-close" tapmode onclick="closeTips()"></span>
+	</div>
+	<section class="aplayer">
+	<video style="width: 100%;height:100%;" src="http://ivi.bupt.edu.cn/hls/gdhd.m3u8" type="application/x-mpegURL" autoplay="" controls=""></video>
+	</section>
+</div>	
+{include file="public/foot2"}
+</body>
+</html>
